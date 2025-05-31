@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Room</title>
+  <script>
+    function generateAlias() {
+      const aliases = ["CuriousFox", "BraveLion", "GentleOtter", "MellowPine", "ShyStar", "CalmStorm", "SilentRiver"];
+      const random = aliases[Math.floor(Math.random() * aliases.length)] + Math.floor(Math.random() * 100);
+      return random;
+    }
+    function enterChat() {
+      let alias = prompt("Enter your alias name:", generateAlias());
+      if (!alias) return;
+      document.getElementById("username").value = alias;
+      document.getElementById("roomForm").submit();
+    }
+  </script>
+</head>
+<body>
+  <h2>Enter Chat Room</h2>
+  <form id="roomForm" method="POST" action="/chat">
+    <input type="hidden" name="username" id="username">
+    <label>Select Room:</label>
+    <select name="room">
+      <option>Joy</option>
+      <option>Sadness</option>
+      <option>Anger</option>
+      <option>Fear</option>
+      <option>Love</option>
+      <option>Surprise</option>
+      <option>Disgust</option>
+    </select><br><br>
+    <button type="button" onclick="enterChat()">Start Chatting</button>
+  </form>
+</body>
+</html>
